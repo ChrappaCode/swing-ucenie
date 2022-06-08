@@ -11,7 +11,7 @@ import java.util.List;
 public class PanelNaKreslenie extends JPanel {
 
     @Getter
-    private List<Objekt> objekty;
+    private final List<Objekt> objekty;
     private Objekt kocka;
 
     public PanelNaKreslenie() {
@@ -27,8 +27,8 @@ public class PanelNaKreslenie extends JPanel {
 
     }
 
-    public void pridajKocku(MouseEvent e, Color c) {
-        this.kocka = new Objekt(e.getX() - 35, e.getY() - 60, c);
+    public void pridajKocku(MouseEvent e, Color color) {
+        this.kocka = new Objekt(e.getX() - 35, e.getY() - 60, color);
         this.objekty.add(kocka);
         this.repaint();
     }
