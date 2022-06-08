@@ -8,6 +8,9 @@ import java.util.Objects;
 
 public class GUI extends JFrame {
 
+    public static final String FARBA = "FARBA";
+    public static final String VYPNI = "VYPNI";
+
     public GUI(){
 
         super("Ucim sa swing");
@@ -24,30 +27,36 @@ public class GUI extends JFrame {
         }
 
         JPanel menu = new JPanel();
-        Logika logika = new Logika();
+        Logika logika = new Logika(this);
 
-        JButton tlacidlo = new JButton("VYPNI");
+        JButton tlacidlo = new JButton(VYPNI);
         tlacidlo.setBackground(new Color(211, 153, 238));
         tlacidlo.setFont((new Font("Serif",Font.BOLD, 30)));
         tlacidlo.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
         tlacidlo.setFocusable(false);
         tlacidlo.addActionListener(logika);
 
-        JButton tlacidlo2 = new JButton("FARBA");
+        JButton tlacidlo2 = new JButton(FARBA);
         tlacidlo2.setBackground(new Color(211, 153, 238));
         tlacidlo2.setFont((new Font("Serif",Font.BOLD, 30)));
         tlacidlo2.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
         tlacidlo2.setFocusable(false);
         tlacidlo2.addActionListener(logika);
 
-        menu.setLayout(new GridLayout(1,1));
+        menu.setLayout(new GridLayout(2,2));
 
         menu.add(tlacidlo);
         menu.add(tlacidlo2);
 
-        this.add(menu,BorderLayout.PAGE_END);
+        menu.add(logika.getFarbaLabel());
+        menu.add(logika.getPocetLabel());
 
-        this.setFocusable(true);
+        this.add(menu,BorderLayout.PAGE_END);
+        logika.getPanelNaKreslenie().setFocusable(true);
+        this.add(logika.getPanelNaKreslenie(),BorderLayout.CENTER);
+
+        this.addMouseListener(logika);
+        
         this.setVisible(true);
 
     }
