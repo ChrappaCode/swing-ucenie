@@ -17,11 +17,14 @@ public class Logika extends Adapter{
     @Getter
     private final JLabel farbaLabel;
 
+    private final JSlider slider;
+
     private Color color;
     private final JFrame okno;
 
-    public Logika(JFrame okno) {
+    public Logika(JFrame okno , JSlider slider) {
 
+        this.slider = slider;
         this.panelNaKreslenie = new PanelNaKreslenie();
         this.color = Color.GREEN;
         this.pocetLabel = new JLabel();
@@ -53,6 +56,7 @@ public class Logika extends Adapter{
         else if (e.getSource() instanceof JComboBox) {
             int x = (int) ((JComboBox) e.getSource()).getSelectedItem();
             okno.setSize(x,x);
+            slider.setValue(x);
         }
     }
 
@@ -85,6 +89,11 @@ public class Logika extends Adapter{
     @Override
     public void stateChanged(ChangeEvent e) {
         System.out.println(((JSlider) e.getSource()).getValue());
+
+        int x = ((JSlider) e.getSource()).getValue();
+
+        okno.setSize(x,x);
+
     }
 }
 

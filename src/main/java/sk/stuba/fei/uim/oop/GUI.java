@@ -26,8 +26,18 @@ public class GUI extends JFrame {
             System.exit(0);
         }
 
+        JSlider slider = new JSlider(JSlider.HORIZONTAL, 450, 1000, 600);
+        slider.setMinorTickSpacing(50);
+        slider.setMajorTickSpacing(50);
+        slider.setSnapToTicks(true);
+        slider.setPaintTicks(true);
+        slider.setPaintLabels(true);
+        slider.setFocusable(false);
+
         JPanel menu = new JPanel();
-        Logika logika = new Logika(this);
+        Logika logika = new Logika(this, slider);
+
+        slider.addChangeListener(logika);
 
         JButton tlacidlo = new JButton(VYPNI);
         tlacidlo.setBackground(new Color(211, 153, 238));
@@ -49,14 +59,6 @@ public class GUI extends JFrame {
         velkosti.addActionListener(logika);
         velkosti.setFocusable(false);
 
-        JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 100, 10);
-        slider.setMinorTickSpacing(10);
-        slider.setMajorTickSpacing(10);
-        slider.setSnapToTicks(true);
-        slider.setPaintTicks(true);
-        slider.setPaintLabels(true);
-        slider.addChangeListener(logika);
-        slider.setFocusable(false);
 
         menu.setLayout(new GridLayout(3,2));
 
