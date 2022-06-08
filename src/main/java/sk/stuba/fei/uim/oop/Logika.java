@@ -3,6 +3,7 @@ package sk.stuba.fei.uim.oop;
 import lombok.Getter;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
@@ -42,11 +43,16 @@ public class Logika extends Adapter{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         if (e.getActionCommand().equals(GUI.FARBA)) {
             farbaSet();
         }
         else if (e.getActionCommand().equals(GUI.VYPNI)) {
             okno.dispose();
+        }
+        else if (e.getSource() instanceof JComboBox) {
+            int x = (int) ((JComboBox) e.getSource()).getSelectedItem();
+            okno.setSize(x,x);
         }
     }
 
@@ -74,6 +80,11 @@ public class Logika extends Adapter{
         updateLabel();
 
 
+    }
+
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        System.out.println(((JSlider) e.getSource()).getValue());
     }
 }
 

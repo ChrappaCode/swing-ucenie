@@ -43,13 +43,31 @@ public class GUI extends JFrame {
         tlacidlo2.setFocusable(false);
         tlacidlo2.addActionListener(logika);
 
-        menu.setLayout(new GridLayout(2,2));
+        Integer[] velko = { 450, 500 , 600, 700, 800 };
+        JComboBox velkosti = new JComboBox(velko);
+        velkosti.setSelectedIndex(2);
+        velkosti.addActionListener(logika);
+        velkosti.setFocusable(false);
+
+        JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 100, 10);
+        slider.setMinorTickSpacing(10);
+        slider.setMajorTickSpacing(10);
+        slider.setSnapToTicks(true);
+        slider.setPaintTicks(true);
+        slider.setPaintLabels(true);
+        slider.addChangeListener(logika);
+        slider.setFocusable(false);
+
+        menu.setLayout(new GridLayout(3,2));
 
         menu.add(tlacidlo);
         menu.add(tlacidlo2);
 
         menu.add(logika.getFarbaLabel());
         menu.add(logika.getPocetLabel());
+
+        menu.add(velkosti);
+        menu.add(slider);
 
         this.add(menu,BorderLayout.PAGE_END);
         logika.getPanelNaKreslenie().setFocusable(true);
