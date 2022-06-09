@@ -1,7 +1,10 @@
 package sk.stuba.fei.uim.oop;
 
+import lombok.Getter;
+
 import java.awt.*;
 
+@Getter
 public class Auto {
 
     private int x;

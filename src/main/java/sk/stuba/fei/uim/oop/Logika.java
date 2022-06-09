@@ -44,6 +44,10 @@ public class Logika extends Adapter{
 
     }
 
+    private Line createLine(int angle) {
+        return new Line(auto.getX() + 104, 130, 5, angle, this.color);
+    }
+
     private void updateLabel() {
         this.pocetLabel.setText("Počet kociek : " + panelNaKreslenie.getObjekty().size());
     }
@@ -104,9 +108,11 @@ public class Logika extends Adapter{
     public void keyPressed(KeyEvent e) {
 
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            panelNaKreslenie.pridajCiaru(createLine(180));
             auto.brmBrm(5);
         }
         else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            panelNaKreslenie.pridajCiaru(createLine(180));
             auto.spiatocka(5);
         }
         panelNaKreslenie.repaint();

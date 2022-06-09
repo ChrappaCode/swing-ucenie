@@ -12,6 +12,7 @@ public class PanelNaKreslenie extends JPanel {
 
     @Getter
     private final List<Objekt> objekty;
+    private final List<Line> lines;
     private Objekt kocka;
 
     private final Auto auto;
@@ -21,14 +22,20 @@ public class PanelNaKreslenie extends JPanel {
         this.auto = auto;
         setBackground(Color.cyan);
         this.objekty = new ArrayList<>();
+        this.lines = new ArrayList<>();
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         objekty.forEach(l -> l.draw(g));
+        lines.forEach(l -> l.draw(g));
         auto.draw(g);
 
+    }
+
+    public void pridajCiaru(Line line) {
+        this.lines.add(line);
     }
 
     public void pridajKocku(MouseEvent e, Color color) {
