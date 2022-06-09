@@ -26,9 +26,9 @@ public class GUI extends JFrame {
             System.exit(0);
         }
 
-        JSlider slider = new JSlider(JSlider.HORIZONTAL, 450, 1000, 600);
-        slider.setMinorTickSpacing(50);
-        slider.setMajorTickSpacing(50);
+        JSlider slider = new JSlider(JSlider.HORIZONTAL, 5, 50, 5);
+        slider.setMinorTickSpacing(5);
+        slider.setMajorTickSpacing(5);
         slider.setSnapToTicks(true);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);

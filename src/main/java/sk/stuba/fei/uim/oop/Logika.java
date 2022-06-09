@@ -21,6 +21,8 @@ public class Logika extends Adapter{
 
     private final JSlider slider;
 
+    private int sliderInt;
+
 
     private Color color;
     private final JFrame okno;
@@ -29,6 +31,7 @@ public class Logika extends Adapter{
 
         this.auto = new Auto();
         this.slider = slider;
+        this.sliderInt = slider.getValue();
         this.panelNaKreslenie = new PanelNaKreslenie(auto);
         this.color = Color.GREEN;
         this.pocetLabel = new JLabel();
@@ -45,7 +48,7 @@ public class Logika extends Adapter{
     }
 
     private Line createLine(int angle) {
-        return new Line(auto.getX() + 104, 130, 5, angle, this.color);
+        return new Line(auto.getX() + 104, 130, sliderInt, angle, this.color);
     }
 
     private void updateLabel() {
@@ -96,11 +99,10 @@ public class Logika extends Adapter{
 
     @Override
     public void stateChanged(ChangeEvent e) {
+
         System.out.println(((JSlider) e.getSource()).getValue());
+        sliderInt = ((JSlider) e.getSource()).getValue();
 
-        int x = ((JSlider) e.getSource()).getValue();
-
-        okno.setSize(x,x);
 
     }
 
@@ -109,11 +111,11 @@ public class Logika extends Adapter{
 
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             panelNaKreslenie.pridajCiaru(createLine(180));
-            auto.brmBrm(5);
+            auto.brmBrm(sliderInt);
         }
         else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             panelNaKreslenie.pridajCiaru(createLine(180));
-            auto.spiatocka(5);
+            auto.spiatocka(sliderInt);
         }
         panelNaKreslenie.repaint();
 
