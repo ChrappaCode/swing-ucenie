@@ -6,10 +6,12 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 public class Logika extends Adapter{
 
+    private final Auto auto;
     @Getter
     private final PanelNaKreslenie panelNaKreslenie;
     @Getter
@@ -19,13 +21,15 @@ public class Logika extends Adapter{
 
     private final JSlider slider;
 
+
     private Color color;
     private final JFrame okno;
 
     public Logika(JFrame okno , JSlider slider) {
 
+        this.auto = new Auto();
         this.slider = slider;
-        this.panelNaKreslenie = new PanelNaKreslenie();
+        this.panelNaKreslenie = new PanelNaKreslenie(auto);
         this.color = Color.GREEN;
         this.pocetLabel = new JLabel();
         pocetLabel.setFont(new Font("Serif",Font.BOLD, 30));
@@ -95,6 +99,20 @@ public class Logika extends Adapter{
         okno.setSize(x,x);
 
     }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            auto.brmBrm(5);
+        }
+        else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            auto.spiatocka(5);
+        }
+        panelNaKreslenie.repaint();
+
+    }
+
 }
 
 

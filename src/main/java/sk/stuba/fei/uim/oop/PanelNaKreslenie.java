@@ -14,8 +14,11 @@ public class PanelNaKreslenie extends JPanel {
     private final List<Objekt> objekty;
     private Objekt kocka;
 
-    public PanelNaKreslenie() {
+    private final Auto auto;
+
+    public PanelNaKreslenie(Auto auto) {
         super();
+        this.auto = auto;
         setBackground(Color.cyan);
         this.objekty = new ArrayList<>();
     }
@@ -24,6 +27,7 @@ public class PanelNaKreslenie extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         objekty.forEach(l -> l.draw(g));
+        auto.draw(g);
 
     }
 
