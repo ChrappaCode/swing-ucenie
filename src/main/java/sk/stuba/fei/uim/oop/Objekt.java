@@ -1,7 +1,10 @@
 package sk.stuba.fei.uim.oop;
 
+import lombok.Getter;
+
 import java.awt.*;
 
+@Getter
 public class Objekt {
 
     private final int x;
@@ -20,7 +23,6 @@ public class Objekt {
         g.fillRect(x,y,60,60);
 
     }
-
 
 
 }

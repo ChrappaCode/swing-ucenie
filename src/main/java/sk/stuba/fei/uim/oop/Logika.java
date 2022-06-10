@@ -23,7 +23,7 @@ public class Logika extends Adapter{
 
     private int sliderInt;
 
-    private Kurzor kurzor;
+    private final Kurzor kurzor;
 
 
     private Color color;
@@ -50,8 +50,8 @@ public class Logika extends Adapter{
 
     }
 
-    private Line createLine(int angle) {
-        return new Line(auto.getX() + 104, 130, sliderInt, angle, this.color);
+    private Line createLine() {
+        return new Line(auto.getX() + 104, 130, sliderInt, 180, this.color);
     }
 
     private void updateLabel() {
@@ -94,6 +94,7 @@ public class Logika extends Adapter{
     @Override
     public void mouseClicked(MouseEvent e) {
 
+
         panelNaKreslenie.pridajKocku(e, color);
         panelNaKreslenie.repaint();
         updateLabel();
@@ -109,6 +110,7 @@ public class Logika extends Adapter{
 
 
         kurzor.pohyb(x-35,y-60);
+
         panelNaKreslenie.repaint();
 
     }
@@ -126,11 +128,11 @@ public class Logika extends Adapter{
     public void keyPressed(KeyEvent e) {
 
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            panelNaKreslenie.pridajCiaru(createLine(180));
+            panelNaKreslenie.pridajCiaru(createLine());
             auto.brmBrm(sliderInt);
         }
         else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            panelNaKreslenie.pridajCiaru(createLine(180));
+            panelNaKreslenie.pridajCiaru(createLine());
             auto.spiatocka(sliderInt);
         }
         panelNaKreslenie.repaint();

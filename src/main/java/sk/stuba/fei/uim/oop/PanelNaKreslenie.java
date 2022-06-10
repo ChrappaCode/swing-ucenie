@@ -16,7 +16,7 @@ public class PanelNaKreslenie extends JPanel {
     private Objekt kocka;
 
     private final Auto auto;
-    private Kurzor kurzor;
+    private final Kurzor kurzor;
 
     public PanelNaKreslenie(Auto auto , Kurzor kurzor) {
         super();
