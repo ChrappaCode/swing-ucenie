@@ -76,6 +76,7 @@ public class GUI extends JFrame {
         this.add(logika.getPanelNaKreslenie(),BorderLayout.CENTER);
 
         this.addMouseListener(logika);
+        this.addMouseMotionListener(logika);
         this.addKeyListener(logika);
         this.setFocusable(true);
         

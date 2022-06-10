@@ -23,6 +23,8 @@ public class Logika extends Adapter{
 
     private int sliderInt;
 
+    private Kurzor kurzor;
+
 
     private Color color;
     private final JFrame okno;
@@ -32,7 +34,8 @@ public class Logika extends Adapter{
         this.auto = new Auto();
         this.slider = slider;
         this.sliderInt = slider.getValue();
-        this.panelNaKreslenie = new PanelNaKreslenie(auto);
+        kurzor = new Kurzor(1000,1000);
+        this.panelNaKreslenie = new PanelNaKreslenie(auto, kurzor);
         this.color = Color.GREEN;
         this.pocetLabel = new JLabel();
         pocetLabel.setFont(new Font("Serif",Font.BOLD, 30));
@@ -87,6 +90,7 @@ public class Logika extends Adapter{
         }
     }
 
+
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -94,6 +98,18 @@ public class Logika extends Adapter{
         panelNaKreslenie.repaint();
         updateLabel();
 
+
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+
+        int x = e.getX();
+        int y = e.getY();
+
+
+        kurzor.pohyb(x-35,y-60);
+        panelNaKreslenie.repaint();
 
     }
 

@@ -16,9 +16,11 @@ public class PanelNaKreslenie extends JPanel {
     private Objekt kocka;
 
     private final Auto auto;
+    private Kurzor kurzor;
 
-    public PanelNaKreslenie(Auto auto) {
+    public PanelNaKreslenie(Auto auto , Kurzor kurzor) {
         super();
+        this.kurzor = kurzor;
         this.auto = auto;
         setBackground(Color.cyan);
         this.objekty = new ArrayList<>();
@@ -28,6 +30,7 @@ public class PanelNaKreslenie extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        kurzor.draw(g);
         objekty.forEach(l -> l.draw(g));
         lines.forEach(l -> l.draw(g));
         auto.draw(g);
