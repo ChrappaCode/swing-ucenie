@@ -30,10 +30,10 @@ public class PanelNaKreslenie extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        kurzor.draw(g);
         objekty.forEach(l -> l.draw(g));
         lines.forEach(l -> l.draw(g));
         auto.draw(g);
+        kurzor.draw(g);
 
     }
 

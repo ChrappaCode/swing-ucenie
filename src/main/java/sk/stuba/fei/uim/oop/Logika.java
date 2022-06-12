@@ -25,6 +25,8 @@ public class Logika extends Adapter{
 
     private final Kurzor kurzor;
 
+    private int i;
+
 
     private Color color;
     private final JFrame okno;
@@ -50,8 +52,8 @@ public class Logika extends Adapter{
 
     }
 
-    private Line createLine() {
-        return new Line(auto.getX() + 104, 130, sliderInt, 180, this.color);
+    private Line createLine(int angle) {
+        return new Line(auto.getX() + 104, auto.getY() + 130, sliderInt, angle, this.color);
     }
 
     private void updateLabel() {
@@ -94,9 +96,9 @@ public class Logika extends Adapter{
     @Override
     public void mouseClicked(MouseEvent e) {
 
-
         panelNaKreslenie.pridajKocku(e, color);
         panelNaKreslenie.repaint();
+        kurzor.pohyb(1000,1000);
         updateLabel();
 
 
@@ -127,13 +129,30 @@ public class Logika extends Adapter{
     @Override
     public void keyPressed(KeyEvent e) {
 
+        this.i = 0;
+
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            panelNaKreslenie.pridajCiaru(createLine());
             auto.brmBrm(sliderInt);
+            panelNaKreslenie.pridajCiaru(createLine(180));
+            i = 0;
         }
         else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            panelNaKreslenie.pridajCiaru(createLine());
             auto.spiatocka(sliderInt);
+            panelNaKreslenie.pridajCiaru(createLine(180));
+            i = 0;
+        }
+        if(i == 1){
+            panelNaKreslenie.pridajCiaru(createLine(180));
+        }
+        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            auto.dole(sliderInt);
+            panelNaKreslenie.pridajCiaru(createLine(90));
+            i = 1;
+        }
+        else if (e.getKeyCode() == KeyEvent.VK_UP) {
+            auto.hore(sliderInt);
+            panelNaKreslenie.pridajCiaru(createLine(90));
+            i = 1;
         }
         panelNaKreslenie.repaint();
 
