@@ -1,6 +1,10 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.panel;
 
 import lombok.Getter;
+import sk.stuba.fei.uim.oop.objekty.Auto;
+import sk.stuba.fei.uim.oop.objekty.Kurzor;
+import sk.stuba.fei.uim.oop.objekty.Line;
+import sk.stuba.fei.uim.oop.objekty.Objekt;
 
 import javax.swing.*;
 import java.awt.*;

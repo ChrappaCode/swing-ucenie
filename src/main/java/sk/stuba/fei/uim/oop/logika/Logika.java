@@ -1,6 +1,11 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.logika;
 
 import lombok.Getter;
+import sk.stuba.fei.uim.oop.objekty.Auto;
+import sk.stuba.fei.uim.oop.objekty.Kurzor;
+import sk.stuba.fei.uim.oop.objekty.Line;
+import sk.stuba.fei.uim.oop.gui.GUI;
+import sk.stuba.fei.uim.oop.panel.PanelNaKreslenie;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -9,7 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-public class Logika extends Adapter{
+public class Logika extends Adapter {
 
     private final Auto auto;
     @Getter

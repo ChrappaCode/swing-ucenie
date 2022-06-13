@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.logika;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;

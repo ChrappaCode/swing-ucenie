@@ -1,4 +1,6 @@
-package sk.stuba.fei.uim.oop;
+package sk.stuba.fei.uim.oop.gui;
+
+import sk.stuba.fei.uim.oop.logika.Logika;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -8,12 +10,13 @@ import java.util.Objects;
 
 public class GUI extends JFrame {
 
+    public static final String MENO = "Ucim sa swing";
     public static final String FARBA = "FARBA";
     public static final String VYPNI = "VYPNI";
 
     public GUI(){
 
-        super("Ucim sa swing");
+        super(MENO);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(600,600);
         this.setResizable(false);
